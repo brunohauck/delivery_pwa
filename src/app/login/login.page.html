@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium-tint" padding>
+  <form #form="ngForm" (ngSubmit)="login(form)">
+    <ion-grid>
+      <ion-row color="medium-tint" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h3>Login</h3>
+          </div>
+          <div padding>
+            <ion-item>
+              <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
+
+            </ion-item>
+            <ion-item>
+              <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+            </ion-item>
+          </div>
+          <div padding>
+              <ion-input name="grant_type" type="hidden" value="password"></ion-input>
+              <ion-input name="client_id" type="hidden" value="6"></ion-input>
+              <ion-input name="client_secret" type="hidden" value="HYkLZxruTZ40dXVUqwxNxWK4z3IOyjh9QTvD4nry"></ion-input>
+            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <div text-center>
+          If you don't have an account, please <a routerLink='/create-user'>
+            register</a> first!
+        </div>
+      </ion-row>
+
+    </ion-grid>
+  </form>
+</ion-content>

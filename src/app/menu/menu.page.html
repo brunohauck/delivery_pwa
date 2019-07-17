@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    <ion-title>menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor='let menu of menus' (click)="seleciona(menu)"  class="welcome-card">
+    <ion-img src="{{ menu.img_url }}"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>R$ {{menu.price}} </ion-card-subtitle>
+      <ion-card-title>{{ menu.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Ingredientes: {{menu.ingredient}} </p>
+    </ion-card-content>
+    <ion-button (click)="seleciona(menu)" expand="full">Add to Cart</ion-button>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,79 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+		<ion-title>Cart</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-card>
+		<ion-card-header>
+			Items
+		</ion-card-header>
+		<ion-card-content *ngIf="cart.pedidos === null">
+			Seu carrinho está vazio
+		</ion-card-content>
+		<ion-list no-lines>
+			<div *ngFor="let ordermenu of cart.ordermenus; let i = index;">
+				<ion-grid>
+					<ion-row color="medium-tint" justify-content-center>
+						<ion-col>
+							<ion-avatar item-left>
+								<img src="{{ordermenu.menu.img_url}}">
+							</ion-avatar>
+							<h2><strong>{{ordermenu.menu.name }}</strong></h2>
+						</ion-col>
+						<ion-col>
+							<div>
+								<p><strong>{{ordermenu.menu.price }} - x {{ordermenu.quantity}}</strong> </p>
+							</div>
+							<div>
+								<button primary large>
+									<ion-icon name="add" (click)="increaseQuantity(i)"></ion-icon>
+								</button>
+								<button primary large>
+									<ion-icon name="remove" (click)="decreaseQuantity(i)"></ion-icon>
+								</button>
+							</div>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</div>
+		</ion-list>
+		<ion-card-content *ngIf="cart.ordermenus != null">
+			<div>Valor total {{cart.cart_total}}</div>
+			<br />
+			<!--
+			<div>Taxa de entrega {{ cart.taxa_entrega | currency:'BRL':true }}</div>
+			-->
+
+		</ion-card-content>
+	</ion-card>
+	<form #form="ngForm" (ngSubmit)="checkout()" id="cadastro-form1">
+	<ion-card>
+		<ion-item id="pedido-input1">
+			<ion-label>
+				Tefone/Celular:
+			</ion-label>
+			<ion-input type="text" [(ngModel)]="cart.phone" name="observacao" hint="observação" required> </ion-input>
+		</ion-item>
+		<ion-item id="pedido-input1">
+			<ion-label>
+				Endereço:
+			</ion-label>
+			<ion-input type="text" [(ngModel)]="cart.address" name="observacao" hint="observação" required> </ion-input>
+		</ion-item>
+
+		<ion-card-content>
+			<ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Finalizar pedido</ion-button>
+			<!--
+			<ion-button   
+		  (click)="checkout()"
+		  [disabled]="cart.pedidos === null">Finalizar pedido</button>
+		-->
+		</ion-card-content>
+	</ion-card>
+	</form>
+</ion-content>
