@@ -12,3 +12,18 @@ NOTE: There may be a problem copying the project to another machine. To solve th
 Link to the Backend project
 
 https://github.com/brunohauck/delivery_app_backend
+
+Live preview of the application:
+
+Frontend
+http://delivery.startdev.net/home
+
+Backend
+http://deliverybackend.startdev.net/public
+
+Backend endpoints 
+List Restaurants
+http://deliverybackend.startdev.net/public/api/restaurants
+
+List Menus
+http://deliverybackend.startdev.net/public/api/menus/1
